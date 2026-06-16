@@ -1,0 +1,27 @@
+class Solution {
+    public int numIslands(char[][] grid) {
+        int count =0;
+        int m = grid.length;
+        int n = grid[0].length;
+        for ( int i =0; i < m ; i++) {
+            for ( int j =0 ;j < n ; j++) {
+                if (grid[i][j]== '1') {
+                     count++;
+                     BFS(grid,i,j);
+                }
+            }
+        }
+        return count;
+    }
+    public void BFS(char[][] grid, int i, int j) {
+        if ( i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '0') {
+            return;
+        }
+        //mark it as visited 
+        grid[i][j] = '0';
+        BFS(grid, i +1, j);
+        BFS(grid, i -1, j);
+        BFS(grid, i, j +1);
+        BFS(grid, i, j -1);
+    }
+}
